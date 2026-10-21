@@ -130,7 +130,7 @@ Explore the difference between protecting a window and protecting licensed video
 1. Clone the repository.
 
    ```bash
-   git clone https://github.com/GDG-OAU/secure-screen-lab.git
+   git clone https://github.com/GDGOAU-MOBILE/secure-screen-lab.git
    cd secure-screen-lab
    ```
 
