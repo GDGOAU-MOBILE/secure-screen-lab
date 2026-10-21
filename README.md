@@ -1,4 +1,4 @@
-# Secure Screen Lab
+# Secure Screen Lab.
 
 > Explore how Android protects sensitive content from screenshots, screen recording, and unauthorized capture.
 
