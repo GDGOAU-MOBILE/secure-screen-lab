@@ -1,12 +1,10 @@
 package com.gdgoau.securescreen.ui
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -23,12 +21,13 @@ import androidx.compose.ui.Modifier
 import com.gdgoau.securescreen.ui.theme.tone
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.gdgoau.securescreen.Experiment
-import com.gdgoau.securescreen.R
 import com.gdgoau.securescreen.SecureWindow
+import com.gdgoau.securescreen.ui.body.ArtBody
+import com.gdgoau.securescreen.ui.body.DrmBody
+import com.gdgoau.securescreen.ui.body.ObserverBody
+import com.gdgoau.securescreen.ui.body.SensitiveBody
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,16 +54,12 @@ fun ExperimentScreen(experiment: Experiment, onBack: () -> Unit) {
             modifier = Modifier.padding(padding).padding(16.dp),
         ) {
             StatusBanner(experiment)
-            Image(
-                painter = painterResource(R.drawable.sample_art),
-                contentDescription = "Sample artwork",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxWidth().aspectRatio(3f / 2f).clip(MaterialTheme.shapes.extraLarge),
-            )
-            Text(
-                text = "Take a screenshot, record the screen, then open recent apps.",
-                style = MaterialTheme.typography.bodyLarge,
-            )
+            when (experiment) {
+                Experiment.Normal, Experiment.Secure -> ArtBody()
+                Experiment.Observer -> ObserverBody()
+                Experiment.Sensitive -> SensitiveBody()
+                Experiment.Drm -> DrmBody()
+            }
         }
     }
 }

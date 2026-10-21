@@ -1,3 +1,9 @@
 <resources>
-    <style name="Theme.SecureScreenLab" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.SecureScreenLab" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#F8FAFD</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.SecureScreenLab.App</item>
+    </style>
+
+    <style name="Theme.SecureScreenLab.App" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
